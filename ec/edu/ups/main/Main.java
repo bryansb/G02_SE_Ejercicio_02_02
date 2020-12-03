@@ -1,4 +1,4 @@
-package ec.edu.eps.main;
+package ec.edu.ups.main;
 
 public class Main {
 
