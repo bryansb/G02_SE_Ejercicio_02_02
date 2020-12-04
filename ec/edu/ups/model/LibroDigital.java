@@ -2,9 +2,7 @@ package ec.edu.ups.model;
 
 public class LibroDigital extends Libro{
 
-	public LibroDigital(String titulo, String autor, int edicion, double precio) {
-		super(titulo, autor, edicion, precio);
-		// TODO Auto-generated constructor stub
+	public LibroDigital() {
 	}
 
 	@Override
@@ -16,13 +14,15 @@ public class LibroDigital extends Libro{
 	@Override
 	public double calcularComision() {
 		// TODO Auto-generated method stub
-		return 0;
+		double valor = getPrecio() * 0.2;
+		return valor;
 	}
 
 	@Override
 	public double calcularPrecioCosto() {
 		// TODO Auto-generated method stub
-		return 0;
+		double valor = getPrecio() + calcularComision() + calcularGastoEnvio();
+		return valor;
 	}
 
 }
