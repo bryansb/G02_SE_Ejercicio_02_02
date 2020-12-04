@@ -6,12 +6,7 @@ public abstract class Libro {
 	private int edicion;
 	private double precio;
 	
-	public Libro(String titulo, String autor, int edicion, double precio) {
-		super();
-		this.titulo = titulo;
-		this.autor = autor;
-		this.edicion = edicion;
-		this.precio = precio;
+	public Libro() {
 	}
 	
 	public abstract double calcularGastoEnvio();
