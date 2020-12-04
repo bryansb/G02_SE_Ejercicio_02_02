@@ -68,6 +68,7 @@ public class Main {
 					break;
 			}
 		}while(opcion != 7);
+		teclado.close();
 		/*
 		controlador.agregarCompra(valor);
 		controlador.agregarCompra(2);

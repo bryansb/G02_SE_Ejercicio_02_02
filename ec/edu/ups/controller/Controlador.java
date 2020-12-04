@@ -58,7 +58,7 @@ public class Controlador {
 	
 	public void agregarCompra(int index) {
 		Libro libro = libros.get(index);
-		double precio =  libro.calcularPrecioCosto();
+		double precio =  libro.calcularPrecioFinal();
 		if (debitarCredito(precio)) {
 			
 			Compra compra = new Compra();
@@ -71,7 +71,7 @@ public class Controlador {
 					+ "Precio del libro: " + libro.getPrecio() + "\n"
 					+ "Precio de comision: " + libro.calcularComision() + "\n"
 					+ "Precio de envio: " + libro.calcularGastoEnvio() + "\n"
-					+ "Precio final total: " + libro.calcularPrecioCosto()
+					+ "Precio final total: " + libro.calcularPrecioFinal()
 					);
 		}else {
 			System.out.println("Su cuenta no tiene credito suficiente. !Credito actual: " + credito + "$");
@@ -91,7 +91,7 @@ public class Controlador {
 						+ "Titulo del libro: " + compras.get(i).getLibro().getTitulo() + " \n"
 						+ "Autor: " + compras.get(i).getLibro().getAutor() + " \n"
 						+ "Edicio: " + compras.get(i).getLibro().getEdicion() + " \n"
-						+ "Precio: " + compras.get(i).getLibro().calcularPrecioCosto() 
+						+ "Precio: " + compras.get(i).getLibro().calcularPrecioFinal() 
 						);
 			}
 		}

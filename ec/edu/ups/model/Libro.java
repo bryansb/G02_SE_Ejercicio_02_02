@@ -9,6 +9,10 @@ public abstract class Libro {
 	public Libro() {
 	}
 	
+	public double calcularPrecioFinal() {
+		return calcularComision() + calcularGastoEnvio() + calcularPrecioCosto();
+	}
+	
 	public abstract double calcularGastoEnvio();
 	
 	public abstract double calcularComision();
