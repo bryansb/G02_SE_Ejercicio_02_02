@@ -20,10 +20,8 @@ public class Controlador {
 	public Controlador() {
 		this.libros = new ArrayList<Libro>();
 		this.libros = crearLibros();
-		
 		this.cliente = new Cliente();
 		this.cliente.setCreditos(5000);
-		
  		this.credito = cliente.getCreditos();
 		this.compras = new ArrayList<Compra>();
 		this.cliente.setCompra(compras);
@@ -35,7 +33,11 @@ public class Controlador {
 				+ "Credito inicial: " + credito + "$");
 		credito = credito + ingreso;
 		System.out.println("Se acredito la cantidad de: " + ingreso + "$\n"
-				+ "!Total de creditos actuales: " + credito + "$");
+				+ "Total de creditos actuales: " + credito + "$");
+		return credito;
+	}
+	
+	public double consultaSaldo() {
 		return credito;
 	}
 	
@@ -57,7 +59,6 @@ public class Controlador {
 	public void agregarCompra(int index) {
 		Libro libro = libros.get(index);
 		double precio =  libro.calcularPrecioCosto();
-		
 		if (debitarCredito(precio)) {
 			
 			Compra compra = new Compra();
@@ -97,31 +98,22 @@ public class Controlador {
 	}
 	
 	public List<Libro> crearLibros() {
-		
 		int precio;
-		
 		for (int i = 1; i < 11; i++) {
-			
 			precio = (int)(Math.random()*200 + 100);
-			
 			Libro libroD = new LibroDigital();
-			
+			libroD.setTitulo("Titulo" + i + "(Digital)");
 			libroD.setAutor("Autor" + i);
 			libroD.setEdicion(1);
 			libroD.setPrecio(precio);
-			libroD.setTitulo("Titulo" + i + " (Digital)");
-			
 			Libro libroI = new LibroImpreso();
-			
+			libroI.setTitulo("Titulo" + i);
 			libroI.setAutor("Autor" + i);
 			libroI.setEdicion(1);
-			libroI.setPrecio(precio);
-			libroI.setTitulo("Titulo" + i);
-			
+			libroI.setPrecio(precio);	
 			libros.add(libroD);
 			libros.add(libroI);
 		}
-		
 		return libros;
 	}
 
@@ -133,7 +125,7 @@ public class Controlador {
 					+ "Autor: " + libros.get(i).getAutor() + " \n"
 					+ "Edicio: " + libros.get(i).getEdicion() + " \n"
 					+ "Precio: " + libros.get(i).getPrecio() + " \n"
-					+ "-----------------------------------------------------"
+					+ "---------------------------------------------"
 					);
 		}
 	}
@@ -141,20 +133,20 @@ public class Controlador {
 	public int buscarLibro(String titulo) {
 		int index = -1;
 		for (int i = 0; i < libros.size(); i++) {
-			if (libros.get(i).getTitulo().equals(titulo)) {
+			if (libros.get(i).getTitulo().equalsIgnoreCase(titulo)) {
 				index = i;
-				System.out.println("--------Busqueda Libro--------\n"
+				System.out.println(""
 						+ "Libro #: " + i + "\n"
 						+ "Titulo del libro: " + libros.get(i).getTitulo() + " \n"
 						+ "Autor: " + libros.get(i).getAutor() + " \n"
 						+ "Edicio: " + libros.get(i).getEdicion() + " \n"
 						+ "Precio: " + libros.get(i).getPrecio() + " \n"
-						+ "-----------------------------------------------------"
+						+ "------------------------------------------"
 						);
 				return i;
 			}
 		}
-		System.out.println("--------Busqueda Libro--------\n"
+		System.out.println(""
 				+ "No se encuentra el Libro: " + titulo); 
 		return index;
 	}
