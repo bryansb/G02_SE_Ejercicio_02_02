@@ -12,7 +12,7 @@ public class LibroDigital extends Libro{
 
 	@Override
 	public double calcularComision() {
-		double valor = getPrecio() * 0.2;
+		double valor = getPrecio() * 0.02;
 		return valor;
 	}
 
