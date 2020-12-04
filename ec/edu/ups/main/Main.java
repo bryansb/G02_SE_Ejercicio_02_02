@@ -9,13 +9,14 @@ public class Main {
 		Controlador controlador = new Controlador();
 		
 		controlador.listarLibros();
-		controlador.agregarCompra(1);
-//		controlador.agregarCompra(2);
-//		controlador.agregarCompra(3);
-//		controlador.agregarCompra(4);
+		int valor = controlador.buscarLibro("Titulo1");
+		controlador.agregarCompra(valor);
+		controlador.agregarCompra(2);
+		controlador.agregarCompra(8);
+		controlador.agregarCompra(15);
 		controlador.listarCompras();
 		controlador.recargarCredito(1000);
-		controlador.buscarLibro("Titulo1");
+		
 		controlador.buscarLibro("Titulo1 (Digital)");
 	}
 

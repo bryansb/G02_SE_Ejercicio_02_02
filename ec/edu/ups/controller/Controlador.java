@@ -80,15 +80,19 @@ public class Controlador {
 	
 	public void listarCompras() {
 		List<Compra> compras = this.compras;
-		for (int i = 0; i < compras.size(); i++) {
-			System.out.println(
-					"--------Compra #:" + (i+1) + "--------\n"
-					+ "Fecha de compra: " + compras.get(i).getFechaCompra() + " \n"
-					+ "Titulo del libro: " + compras.get(i).getLibro().getTitulo() + " \n"
-					+ "Autor: " + compras.get(i).getLibro().getAutor() + " \n"
-					+ "Edicio: " + compras.get(i).getLibro().getEdicion() + " \n"
-					+ "Precio: " + compras.get(i).getLibro().calcularPrecioCosto() 
-					);
+		if (compras.size() == 0) {
+			System.out.println("--------No existen compras--------");
+		}else {
+			for (int i = 0; i < compras.size(); i++) {
+				System.out.println(
+						"--------Compra #:" + (i+1) + "--------\n"
+						+ "Fecha de compra: " + compras.get(i).getFechaCompra() + " \n"
+						+ "Titulo del libro: " + compras.get(i).getLibro().getTitulo() + " \n"
+						+ "Autor: " + compras.get(i).getLibro().getAutor() + " \n"
+						+ "Edicio: " + compras.get(i).getLibro().getEdicion() + " \n"
+						+ "Precio: " + compras.get(i).getLibro().calcularPrecioCosto() 
+						);
+			}
 		}
 	}
 	
@@ -134,21 +138,25 @@ public class Controlador {
 		}
 	}
 
-	public void buscarLibro(String titulo) {
-		for (Libro libro : libros) {
-			if (libro.getTitulo().equals(titulo)) {
+	public int buscarLibro(String titulo) {
+		int index = -1;
+		for (int i = 0; i < libros.size(); i++) {
+			if (libros.get(i).getTitulo().equals(titulo)) {
+				index = i;
 				System.out.println("--------Busqueda Libro--------\n"
-						+ "Titulo del libro: " + libro.getTitulo() + " \n"
-						+ "Autor: " + libro.getAutor() + " \n"
-						+ "Edicio: " + libro.getEdicion() + " \n"
-						+ "Precio: " + libro.getPrecio() + " \n"
+						+ "Libro #: " + i + "\n"
+						+ "Titulo del libro: " + libros.get(i).getTitulo() + " \n"
+						+ "Autor: " + libros.get(i).getAutor() + " \n"
+						+ "Edicio: " + libros.get(i).getEdicion() + " \n"
+						+ "Precio: " + libros.get(i).getPrecio() + " \n"
 						+ "-----------------------------------------------------"
 						);
+				return i;
 			}
 		}
-		
-		
-		
+		System.out.println("--------Busqueda Libro--------\n"
+				+ "No se encuentra el Libro: " + titulo); 
+		return index;
 	}
 	
 }
