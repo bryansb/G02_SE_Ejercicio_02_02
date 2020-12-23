@@ -6,6 +6,14 @@ public class Compra {
 	private Libro libro;
 	private Date fechaCompra;
 	
+	public Compra() {
+	}
+	
+	public Compra(Libro libro, Date fechaCompra) {
+		super();
+		this.libro = libro;
+		this.fechaCompra = fechaCompra;
+	}
 	public Libro getLibro() {
 		return libro;
 	}
